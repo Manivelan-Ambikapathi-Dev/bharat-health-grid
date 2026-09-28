@@ -1,0 +1,87 @@
+.bhg-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.bhg-logo-mark {
+  width: 52px;
+  height: 52px;
+  flex: none;
+}
+
+.bhg-logo--compact .bhg-logo-mark {
+  width: 40px;
+  height: 40px;
+}
+
+.bhg-logo--dark {
+  --plate: #0f2747;
+  --land: #134e4a;
+  --line: #5eead4;
+  --node: #99f6e4;
+  --cross: #ffffff;
+  --bharat: #64748b;
+  --grid: #0f2747;
+}
+
+.bhg-logo--light {
+  --plate: rgba(255, 255, 255, 0.12);
+  --land: #0f766e;
+  --line: #99f6e4;
+  --node: #ccfbf1;
+  --cross: #ffffff;
+  --bharat: #dbe7f3;
+  --grid: #ffffff;
+}
+
+.bhg-logo-plate { fill: var(--plate); }
+.bhg-logo-land { fill: var(--land); }
+.bhg-logo-link {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bhg-logo-node { fill: var(--node); }
+.bhg-logo-cross {
+  fill: none;
+  stroke: var(--cross);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.bhg-logo-word {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.bhg-logo-bharat {
+  color: var(--bharat);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.bhg-logo-grid {
+  color: var(--grid);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.bhg-logo-mark {
+  animation: bhg-logo-in 700ms ease both;
+}
+
+@keyframes bhg-logo-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bhg-logo-mark { animation: none; }
+}

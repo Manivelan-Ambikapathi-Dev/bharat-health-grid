@@ -1,0 +1,40 @@
+import { Router } from 'express';
+import { healthRouter } from './health.routes.js';
+import { authRouter } from './auth.routes.js';
+import { phcRouter } from './phc.routes.js';
+import { medicineStockRouter } from './medicineStock.routes.js';
+import { bedRouter } from './bed.routes.js';
+import { personnelRouter } from './personnel.routes.js';
+import { attendanceRouter } from './attendance.routes.js';
+import { footfallRouter } from './footfall.routes.js';
+import { analyticsRouter } from './analytics.routes.js';
+import { forecastRouter } from './forecastRoutes.js';
+import { emergencyRouter } from './emergencyRoutes.js';
+import { alertRouter } from './alert.routes.js';
+import { aiRouter } from './ai.routes.js';
+import { redistributionRouter } from './redistribution.routes.js';
+import { phcResourceRouter } from './phcResourceRoutes.js';
+import { authenticate } from '../middleware/authMiddleware.js';
+import { enforceRequestScope } from '../middleware/scopeMiddleware.js';
+
+const apiRouter = Router();
+
+apiRouter.use('/health', healthRouter);
+apiRouter.use('/auth', authRouter);
+apiRouter.use(authenticate);
+apiRouter.use(enforceRequestScope);
+apiRouter.use('/phcs', phcRouter);
+apiRouter.use('/medicine-stock', medicineStockRouter);
+apiRouter.use('/beds', bedRouter);
+apiRouter.use('/personnel-attendance', attendanceRouter);
+apiRouter.use('/personnel', personnelRouter);
+apiRouter.use('/patient-footfall', footfallRouter);
+apiRouter.use('/analytics', analyticsRouter);
+apiRouter.use('/analytics', forecastRouter);
+apiRouter.use('/analytics', emergencyRouter);
+apiRouter.use('/alerts', alertRouter);
+apiRouter.use('/ai', aiRouter);
+apiRouter.use('/redistribution', redistributionRouter);
+apiRouter.use('/phc-resources', phcResourceRouter);
+
+export { apiRouter };

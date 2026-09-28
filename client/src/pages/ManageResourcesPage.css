@@ -1,0 +1,21 @@
+.manage-toolbar {
+  margin-bottom: 16px;
+}
+
+.phc-identity {
+  margin-bottom: 16px;
+}
+
+.identity-label {
+  color: #5f6f6c;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

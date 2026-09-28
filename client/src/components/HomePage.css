@@ -1,0 +1,62 @@
+.home-layout {
+  min-height: 100vh;
+  background: #f3f6f5;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+  padding: 0 28px;
+  background: #0f3d38;
+}
+
+.home-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #14b8a6;
+  color: #042f2e;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.home-brand {
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.home-hero {
+  max-width: 760px;
+  text-align: center;
+}
+
+.home-title {
+  margin-bottom: 12px !important;
+  color: #0f3d38 !important;
+}
+
+.home-tagline {
+  margin-bottom: 0 !important;
+  color: #3f4f4c;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.home-footer {
+  text-align: center;
+  color: #5c6b68;
+  background: transparent;
+}
