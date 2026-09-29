@@ -7,11 +7,26 @@ import { useAuth } from '../auth/AuthContext.jsx';
 import { ROLE_HOME } from '../auth/roles.js';
 import './LoginPage.css';
 
+const DEMO_ACCOUNTS = [
+  { role: 'National Admin', username: 'national.admin', password: 'BHG@12345' },
+  { role: 'State Admin', username: 'tn.admin', password: 'BHG@12345' },
+  { role: 'District Officer', username: 'coimbatore.officer', password: 'BHG@12345' },
+  { role: 'PHC Staff', username: 'sulur.staff', password: 'BHG@12345' },
+];
+
 function LoginPage() {
   const { ready, isAuthenticated, user, login } = useAuth();
   const navigate = useNavigate();
+  const [form] = Form.useForm();
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  function fillDemoAccount(account) {
+    form.setFields([
+      { name: 'username', value: account.username, errors: [] },
+      { name: 'password', value: account.password, errors: [] },
+    ]);
+  }
 
   if (!ready) {
     return null;
@@ -56,7 +71,7 @@ function LoginPage() {
           <h2>Welcome back</h2>
           <p className="login-access">Access Bharat Health Grid</p>
           <p className="login-support">Sign in to access health resource intelligence for your authorized scope.</p>
-          <Form layout="vertical" onFinish={onFinish} requiredMark={false} className="login-form">
+          <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false} className="login-form">
             <Form.Item
               label="Username"
               name="username"
@@ -87,6 +102,19 @@ function LoginPage() {
               {submitting ? 'Signing in...' : 'Sign In'}
             </Button>
           </Form>
+          <section className="login-demos" aria-label="Demo accounts">
+            <p className="login-demos-title">Demo Accounts</p>
+            <div className="login-demos-grid">
+              {DEMO_ACCOUNTS.map((account) => (
+                <div className="login-demo-card" key={account.username}>
+                  <span>{account.role}</span>
+                  <Button size="small" onClick={() => fillDemoAccount(account)}>
+                    Use Demo Login
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
     </main>
