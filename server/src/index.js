@@ -6,8 +6,12 @@ try {
   await pool.query('SELECT 1');
   console.log('Connected to the bharat_health_grid database');
 } catch (error) {
-  console.error('Database connection failed.');
-  console.error(error.message);
+  console.error('Database connection failed.', {
+    message: error.message,
+    code: error.code,
+    errno: error.errno,
+    sqlState: error.sqlState,
+  });
   process.exit(1);
 }
 
