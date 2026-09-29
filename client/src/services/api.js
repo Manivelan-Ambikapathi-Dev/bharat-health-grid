@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://bharat-health-grid-production.up.railway.app/api';
 const AUTH_STORAGE_KEY = 'bhg_auth';
 
 function readToken() {
