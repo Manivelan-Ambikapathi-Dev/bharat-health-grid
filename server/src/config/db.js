@@ -1,7 +1,28 @@
 import mysql from 'mysql2/promise';
 import { db } from './env.js';
 
-const connectionConfig = process.env.MYSQL_URL
+const usingMysqlUrl = Boolean(process.env.MYSQL_URL);
+
+if (usingMysqlUrl) {
+  let host = 'unavailable';
+  let port = 'unavailable';
+  try {
+    const parsed = new URL(process.env.MYSQL_URL);
+    host = parsed.hostname;
+    port = parsed.port || '3306';
+  } catch {
+    // Do not log MYSQL_URL or the parse error; it can contain credentials.
+  }
+  console.log('DB connection mode: MYSQL_URL');
+  console.log('DB host:', host);
+  console.log('DB port:', port);
+} else {
+  console.log('DB connection mode: individual DB variables');
+  console.log('DB host:', db.host);
+  console.log('DB port:', db.port);
+}
+
+const connectionConfig = usingMysqlUrl
   ? { uri: process.env.MYSQL_URL }
   : {
       host: db.host,
