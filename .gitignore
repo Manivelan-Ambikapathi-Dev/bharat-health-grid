@@ -5,6 +5,9 @@ node_modules/
 dist/
 build/
 
+# Byte-copy of database/*.sql created by server/scripts/copyDatabaseSql.js
+server/database/
+
 # Environment and secrets
 .env
 .env.local

@@ -19,25 +19,21 @@ const REQUIRED_TABLES = [
 const INIT_LOCK = 'bhg_db_init';
 
 function resolveDatabaseDir() {
-  const moduleDir = path.dirname(fileURLToPath(import.meta.url));
-  const candidates = [
-    path.resolve(moduleDir, '../../../database'),
-    path.resolve(process.cwd(), '../database'),
-    path.resolve(process.cwd(), 'database'),
-  ];
+  const databaseDir = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)),
+    '../../database',
+  );
+  const missing = ['schema.sql', 'seed_users.sql'].filter(
+    (fileName) => !fs.existsSync(path.join(databaseDir, fileName)),
+  );
 
-  const match = candidates.find((candidate) => (
-    fs.existsSync(path.join(candidate, 'schema.sql'))
-    && fs.existsSync(path.join(candidate, 'seed_users.sql'))
-  ));
-
-  if (!match) {
+  if (missing.length > 0) {
     throw new Error(
-      'Could not find database/schema.sql and database/seed_users.sql. Set the Railway root directory to the project folder that contains both server and database, and set the start command to: npm --prefix server start',
+      `Missing ${missing.join(' and ')} in server/database. Run npm run build so the server can copy them from database/.`,
     );
   }
 
-  return match;
+  return databaseDir;
 }
 
 let databaseDir;

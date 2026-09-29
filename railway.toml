@@ -1,0 +1,6 @@
+[build]
+buildCommand = "npm ci --prefix server && npm --prefix server run build"
+watchPatterns = ["server/**", "database/schema.sql", "database/seed_users.sql", "railway.toml", "package.json"]
+
+[deploy]
+startCommand = "npm --prefix server start"

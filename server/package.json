@@ -4,8 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "build": "node scripts/copyDatabaseSql.js",
+    "prestart": "node scripts/copyDatabaseSql.js",
     "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "dev": "node scripts/copyDatabaseSql.js && node --watch src/index.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
